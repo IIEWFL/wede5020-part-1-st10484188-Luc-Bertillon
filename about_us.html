@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AboutUs</title>
-    <link rel="stylesheet" href="_css/styles.css">
+    <link rel="stylesheet" href="_css/images.css">
     		<script src="javascript/jquery-1.10.2.min.js"></script>
 		<script src="javascript/lightbox-2.6.min.js"></script>
 		<script src="javascript/modernizr.custom.js"></script>
-		<link rel="stylesheet" href="css/lightbox.css" media="screen"/>
+		<link rel="stylesheet" href="_css/lightbox.css" media="screen"/>
     
 </head>
    
@@ -47,18 +47,64 @@
         <p align="center">At FOUR PAWS, our mission is to improve the lives of animals around the world through rescue, advocacy, and education.</p>
     </section>
     <div  style="display: flex; justify-content: center; gap: 10px;">
-      <img  src="_images/Lion.jpg" width="50%" alt="Placeholder Image">
-        <img src="_images/Female.jpg" width="50%" alt="Placeholder Image">
+                          <div class="image-card">
+                <img  src="_images/Lion.jpg" width="50%" alt="Placeholder Image" class="responsive-image">
+                  </div>
+                <br>
+                <div class="image-card">
+                    <img src="_images/Female.jpg" width="50%" alt="Placeholder Image" class="responsive-image">
+                </div>
+      >
+
     </div>
     <section>
         <h2 align="center">Our Team</h2>
         <p align="center">We are a dedicated team of animal lovers and professionals committed to making a difference in the lives of animals.</p>
             <div style="display: flex; justify-content: center; gap: 10px;">
-        <img src="_images/cat1.webp" width="50%" alt="Placeholder Image">
-        <img src="_images/cat2.webp" width="50%" alt="Placeholder Image">
+                  <div class="image-card">
+                <img src="_images/cat1.webp" width="50%" alt="Placeholder Image" class="responsive-image">
+                  </div>
+                <br>
+                <div class="image-card">
+                <img src="_images/cat2.webp" width="50%" alt="Placeholder Image" class="responsive-image">
+                </div>
     </div>
     </section>
 
+    
+    <header>
+        <h1>Our Animals</h1>
+    </header>
+
+    <main class="container">
+        <section class="gallery">
+            <div class="image-card">
+                <img src="_images/dog.jpg" alt="Sample image 1" class="responsive-image">
+                <div class="image-text">Dogs</div>
+            </div>
+            
+            <div class="image-card">
+                <img src="_images/bird.webp" alt="Sample image 2" class="responsive-image">
+                <div class="image-text">Birds</div>
+            </div>
+            
+            <div class="image-card">
+                <img src="_images/cat2.jpg" alt="Sample image 3" class="responsive-image">
+                <div class="image-text">Cats</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="text-content">
+                <h2>About Our Gallery</h2>
+                <p>All of our animals are rescues and we try to do everything that we can to help them and find them good homes that will treat them the way that they deserve</p>
+            </div>
+            <div class="side-image">
+                <img src="_images/help.avif" alt="Side image" class="responsive-image">
+            </div>
+        </section>
+    </main>
+ 
  <section>
         <h2>Get in Touch</h2>
         <p>We would love to hear from you! Please reach out with any questions or inquiries.</p>
@@ -74,8 +120,18 @@
                     </p>
         </main>
     </section>
-    
- 
- 
+      
+    <!-- Zoom Modal -->
+    <div id="zoomModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <span class="nav-btn prev-btn">&lt;</span>
+        <span class="nav-btn next-btn">&gt;</span>
+        <img class="modal-content" id="zoomedImage">
+        <div id="imageCaption"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+
+
 </body>
 </html>
