@@ -13,7 +13,7 @@
             --light: #f8f9fa;
             --dark: #2c3e50;
             --text: #333;
-            --gray: #7f8c8d;
+            --grey: #7f8c8d;
             --success: #2ecc71;
         }
         
@@ -112,13 +112,13 @@
             display: block;
             padding: 15px 20px;
             text-decoration: none;
-            color: white;
+            color: var(--primary);
             border-bottom: 1px solid rgba(255,255,255,0.1);
             transition: background-color 0.3s;
         }
         
         .nav-menu a:hover {
-            background-color: var(--secondary);
+            background-color: white;
         }
         
         /* button-style replacements - matching original styling */
@@ -191,7 +191,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0px;
-            background-color: var(--primary);
+            background-color: white;
         }
         
         .desktop-nav-links {
@@ -203,7 +203,7 @@
         
         /* Hero Section */
         .hero-section {
-            background: var(--primary);
+            background: var(--grey);
             padding: 4rem 0;
             text-align: center;
             color: white;
@@ -212,12 +212,12 @@
         .hero-title {
             font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
-            color: white;
+            color: rgb(221, 221, 221);
         }
         
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: rgba(255,255,255,0.9);
+            color: white;
             max-width: 800px;
             margin: 0 auto 2rem;
         }
@@ -239,7 +239,7 @@
             max-width: 800px;
             margin: 0 auto 3rem;
             font-size: 1.2rem;
-            color: var(--gray);
+            color: var(--grey);
         }
         
         /* Image Gallery */
@@ -296,7 +296,7 @@
         
         /* Team Section */
         .team-section {
-            background: var(--light);
+            background: white;
             padding: 4rem 0;
         }
         
@@ -621,8 +621,8 @@
     </header>
     
     <!-- Desktop Navigation -->
-    <div class="desktop-nav">
-        <div class="container">
+    <div class="container">
+        <div class="desktop-nav">
             <a href="index.html">
                 <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
             </a>
