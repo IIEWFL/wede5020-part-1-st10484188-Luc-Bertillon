@@ -10,10 +10,131 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
+<style>
+    body {
+        font-family: Arial, sans-serif;
+      
+        padding: 0;
+        background-color: var(--primary, --secondary);
+    }
+            :root {
+            --primary: #4a90e2;
+            --secondary: #63b3ed;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --gray: #7f8c8d;
+            --success: #2ecc71;
+        }
+        button {
+            font-family: Arial, sans-serif;
+            background-color: var(--primary);
+        }
+    h1, h2, h3 {
+        color: #333;
+    }
+    p {
+        line-height: 1.6;
+        color: #555;
+    }
+    table {
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 0px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* button-style replacements */
+.nav-btn {
+    display: inline-block;
+    background-color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.nav-btn.small { padding: 0px 5px; }
+.nav-btn.green { padding:10px 18px; border-radius:28px; text-decoration:none; color:#fff; background:linear-gradient(45deg,#ff6b6b,#f7b731); box-shadow:0 6px 18px rgba(0,0,0,0.12); transform:translateY(0); transition:transform .18s ease, box-shadow .18s ease; }
+
+/* hover / focus effects */
+.nav-btn:hover,
+.nav-btn:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    text-decoration: none;
+    outline: none;
+}
+.nav-btn.green:hover { background-color: #9cff67; }
+
+/* ensure heading inside link doesn't add extra spacing */
+.nav-btn h3 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1;
+    color: inherit;
+}
+
+.hero { text-align:center; padding: 40px 20px; position: relative; overflow: visible; }
+.title {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: 2.4rem;
+    margin: 0 0 10px;
+    background: linear-gradient(90deg,#00b7ff,#ffffff,#00b7ff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientMove 6s linear infinite;
+    display: inline-block;
+    transform-origin: center;
+    letter-spacing: 0.5px;
+}
+@keyframes gradientMove {
+    0%{background-position:0% 50%}
+ 50%{background-position:100% 50%}
+ 100%{background-position:0% 50%}
+}
+.title .paw { margin-left: 8px; color: #ffd36b; animation: pawBounce 1.2s ease-in-out infinite; display:inline-block; }
+@keyframes pawBounce {
+    0%,100%{ transform: translateY(0) }
+ 50%{ transform: translateY(-8px) rotate(-8deg) }
+}
+.subtitle { color:var(--dark); opacity:0.95; margin-top:6px; font-size:1rem; animation:fadeIn 1s ease forwards; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(8px)} to{opacity:0.95; transform:translateY(0)} }
+.hero .cta { margin-top:14px; display:inline-flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.hero .cta a { padding:10px 18px; border-radius:28px; text-decoration:none; color:#fff; background:linear-gradient(45deg,#ff6b6b,#f7b731); box-shadow:0 6px 18px rgba(0,0,0,0.12); transform:translateY(0); transition:transform .18s ease, box-shadow .18s ease; }
+.hero .cta a:hover{ transform: translateY(-6px); box-shadow:0 16px 30px rgba(0,0,0,0.18); }
+.sparkle { position:absolute; top:-8px; right:10px; font-size:20px; color:#fff; opacity:0.18; animation:spin 9s linear infinite; pointer-events:none; }
+@keyframes spin{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+/* small shimmer underline for emphasis */
+.title:after {
+    content: "";
+    display:block;
+    height:3px;
+    margin:8px auto 0;
+    width:60%;
+    border-radius:3px;
+    background:linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+    animation: shimmer 2.2s linear infinite;
+}
+@keyframes shimmer {
+    0%{transform:translateX(-100%)}
+ 100%{transform:translateX(100%)}
+}
+
+    </style>
 </head>
 
 <body>
-   
+   <div class="button">
     <table border="0" width="100%" height="0px">
 <!----Row1---->
 <tr> 
@@ -22,33 +143,37 @@
 <th></th>
 <th></th>
 <th></th>
-<th><img src="_images/Logo.JPG" width="" alt="Placeholder Image"></b></th>
-<th><button style="background-color: white; padding: 0px 5px; border: none; border-radius: 5px; cursor: pointer;"><a href="services.html" style="text-decoration: none; color: black;"><h3>SERVICES</h3></a></button></th>
+<th><a href="index.html"><img src="_images/Logo.JPG" alt="Placeholder Image"></a></th>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="enquiry.html" style="text-decoration: none; color: black;"><h3>ENQUIRY</h3></a></button></th>
+<th><a class="nav-btn small" href="services.html"><h3>SERVICES</h3></a></th>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="contact.html" style="text-decoration: none; color: black;"><h3>CONTACT US</h3></a></button></th>
+<th><a class="nav-btn" href="enquiry.html"><h3>ENQUIRY</h3></a></th>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="about_us.html" style="text-decoration: none; color: black;"><h3>ABOUT US</h3></a></button></th>
+<th><a class="nav-btn" href="contact.html"><h3>CONTACT US</h3></a></th>
 
-<th>
-    <button style="background-color: white; padding: 5px; border: none; border-radius: 5px; cursor: pointer; transition: transform 0.2s;">
-        <img src="_images/Search.JPG" width="" alt="Search" style="max-width: 100%; height: auto;">
-    </button>
-</th>
+<th><a class="nav-btn" href="about_us.html"><h3>ABOUT US</h3></a></th>
 
-<th><button style="background-color: greenyellow; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="Donate.html" style="text-decoration: none; color: black;"><h3>DONATE</h3></a></button></th>
+<th><a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a></th>
 
-<th><button style="background-color: greenyellow; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><h3>ADOPT</h3></button></th>
-
+<th><a class="nav-btn green" href="adopt.html"><h3>ADOPT</h3></a></th>
 
 </tr>
+
 
 <!----Row2---->
 <th colspan="2">
 </th>
 </table>
-<h1 align="center"> FourPaws South Africa</h1>
+<style>
+
+</style>
+
+<div class="hero" role="banner" aria-label="FourPaws hero">
+    <h1 class="title">FourPaws South Africa <i class="fa-solid fa-paw paw" aria-hidden="true"></i></h1>
+    <div class="subtitle">Helping paws find loving homes — brighter days, wagging tails.</div>
+
+    <i class="fa-solid fa-star sparkle" aria-hidden="true"></i>
+</div>
 <img src="_images/Background.jpg" width="100%" alt="Placeholder Image">
 
 
