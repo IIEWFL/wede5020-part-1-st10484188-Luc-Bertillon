@@ -3,48 +3,706 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us - FourPaws South Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --secondary: #63b3ed;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --gray: #7f8c8d;
+            --success: #2ecc71;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: url('/_images/golden.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+        }
+        
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Mobile-first navigation */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .nav-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* button-style replacements - matching original styling */
+        .nav-btn {
+            display: inline-block;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--dark);
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+            -webkit-tap-highlight-color: transparent;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--primary);
+        }
+        
+        .nav-btn.small { 
+            padding: 0px 5px; 
+            font-size: 0.9rem;
+        }
+        
+        .nav-btn.green { 
+            padding: 10px 18px; 
+            border-radius: 28px; 
+            text-decoration: none; 
+            color: #fff; 
+            background: linear-gradient(45deg, #ff6b6b, #f7b731); 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12); 
+            transform: translateY(0); 
+            transition: transform .18s ease, box-shadow .18s ease; 
+            border: none;
+        }
+        
+        /* hover / focus effects */
+        .nav-btn:hover,
+        .nav-btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            text-decoration: none;
+            outline: none;
+        }
+        
+        .nav-btn:not(.green):hover {
+            background-color: var(--light);
+        }
+        
+        .nav-btn.green:hover { 
+            background-color: #9cff67; 
+        }
+        
+        /* ensure heading inside link doesn't add extra spacing */
+        .nav-btn h3 {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1;
+            color: inherit;
+        }
+        
+        /* Desktop navigation */
+        .desktop-nav {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .desktop-nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary);
+            padding: 4rem 0;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Methods */
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #ff6b6b, #f7b731);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .contact-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .contact-link:hover {
+            gap: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Contact Form */
+        .contact-form-section {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .field {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: inherit;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #f7b731);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Office Hours */
+        .office-hours {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .office-hours h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .hours-list li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation */
+        .animate-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .mobile-header {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-card {
+                padding: 2rem;
+            }
+            
+            .form-container {
+                padding: 2rem;
+                margin: 0 15px;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .submit-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-section {
+                padding: 3rem 0;
+            }
+            
+            .contact-form-section {
+                padding: 3rem 0;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-        <table border="0" width="100%" height="0px">
-        <!-- Row1 -->
-<th><img src="_images/Logo.JPG" width="" alt="Placeholder Image"></b></th>
-<th><button style="background-color: white; padding: 0px 5px; border: none; border-radius: 5px; cursor: pointer;"><a href="services.html" style="text-decoration: none; color: black;"><h3>SERVICES</h3></a></button></th>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <a href="index.html">
+            <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about_us.html">About Us</a>
+            <a href="Donate.html">Donate</a>
+            <a href="adopt.html">Adopt</a>
+        </nav>
+    </header>
+    
+    <!-- Desktop Navigation -->
+    <div class="container">
+        <div class="desktop-nav">
+            <a href="index.html">
+                <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
+            </a>
+            <div class="desktop-nav-links">
+                <a class="nav-btn small" href="services.html"><h3>SERVICES</h3></a>
+                <a class="nav-btn" href="enquiry.html"><h3>ENQUIRY</h3></a>
+                <a class="nav-btn" href="contact.html"><h3>CONTACT US</h3></a>
+                <a class="nav-btn" href="about_us.html"><h3>ABOUT US</h3></a>
+                <a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a>
+                <a class="nav-btn green" href="adopt.html"><h3>ADOPT</h3></a>
+            </div>
+        </div>
+    </div>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="enquiry.html" style="text-decoration: none; color: black;"><h3>ENQUIRY</h3></a></button></th>
+    <!-- Hero Image -->
+    <div class="hero-image"></div>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="contact.html" style="text-decoration: none; color: black;"><h3>CONTACT US</h3></a></button></th>
+ <div class="
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h1 class="contact-title">Contact Us</h1>
+                <p class="contact-subtitle">We'd Love to Hear From You! Whether you have questions, feedback, or just want to say hello, we're here to listen.</p>
+            </div>
+            
+            <div class="contact-methods">
+                <div class="contact-card animate-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Send us an email and we'll get back to you within 24 hours</p>
+                    <a href="mailto:office@four-paws.org.za" class="contact-link">
+                        office@four-paws.org.za <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="contact-card animate-card delay-1">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our team during business hours</p>
+                    <a href="tel:+27116468330" class="contact-link">
+                        +27 11 646 8330 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="contact-card animate-card delay-2">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Come see our facility and meet our animals in person</p>
+                    <a href="#" class="contact-link">
+                        Get Directions <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="about_us.html" style="text-decoration: none; color: black;"><h3>ABOUT US</h3></a></button></th>
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">Send Us a Message</h2>
+                <form action="#" method="post" novalidate>
+                    <div class="field">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                </form>
+                
+                <div class="office-hours">
+                    <h3>Office Hours</h3>
+                    <ul class="hours-list">
+                        <li><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
+                        <li><strong>Saturday:</strong> 9:00 AM - 4:00 PM</li>
+                        <li><strong>Sunday:</strong> 10:00 AM - 2:00 PM</li>
+                        <li><strong>Emergency Line:</strong> Available 24/7 for animal emergencies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<th>
-    <button style="background-color: white; padding: 5px; border: none; border-radius: 5px; cursor: pointer; transition: transform 0.2s;">
-        <img src="_images/Search.JPG" width="" alt="Search" style="max-width: 100%; height: auto;">
-    </button>
-</th>
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> FourPaws Animal Adoption Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<th><button style="background-color: greenyellow; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="Donate.html" style="text-decoration: none; color: black;"><h3>DONATE</h3></a></button></th>
-
-<th><button style="background-color: greenyellow; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><h3>ADOPT</h3></button></th>
-
-
-</tr>
-
-<!----Row2---->
-<th colspan="2">
-</th>
-</table>
-
-<img src="_images/golden.jpg" width="100%" alt="Placeholder Image">
-
-    <h2 align="center">Contact Us</h2>
-    <section>
-        <h2 align="center">We'd Love to Hear From You!</h2>
-        <p align="center">Whether you have questions, feedback, or just want to say hello, we're here to listen. Reach out to us through any of the following methods:</p>
-        <ul>
-            <li align="center"><strong>Email: <a>office@four-paws.org.za</a> </strong>
-            </li>
-            <li align="center"><strong>Phone: <a>+27 11 646 8330</a> </strong>
-            </li>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                // Animate hamburger to X
+                const spans = this.querySelectorAll('span');
+                if (this.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    
+                    // Reset hamburger animation
+                    const spans = mobileMenuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+            
+            // Animation on scroll
+            const animateCards = document.querySelectorAll('.animate-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateCards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
