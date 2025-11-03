@@ -130,6 +130,213 @@
  100%{transform:translateX(100%)}
 }
 
+  .stats {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+                .testimonials {
+            background: white;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: "“";
+            font-size: 4rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+            color: white;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -153,7 +360,7 @@
 
 <th><a class="nav-btn" href="about_us.html"><h3>ABOUT US</h3></a></th>
 
-<th><a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a></th>
+    <th><a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a></th>
 
 <th><a class="nav-btn green" href="adopt.html"><h3>ADOPT</h3></a></th>
 
@@ -176,7 +383,191 @@
 </div>
 <img src="_images/Background.jpg" width="100%" alt="Placeholder Image">
 
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Animals Rescued</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,800+</div>
+                    <div class="stat-label">Successful Adoptions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Volunteers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Adoption Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+        <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="text-align: center;">Happy Tails</h2>
+                <p>Hear from families who found their perfect companions through FourPaws</p>
+            </div>
+            
+            <div class="testimonial-cards">
+                <div class="testimonial-card animate">
+                    <div class="testimonial-text">
+                        "Adopting Luna was the best decision we ever made. She's brought so much joy to our family. The adoption process was smooth and the staff was incredibly helpful."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/_images/person3.jpg" alt="Sarah Johnson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Adopted Luna, 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate">
+                    <div class="testimonial-text">
+                        "We were looking for a senior dog to join our quiet home, and Simba has been the perfect match. He's gentle, loving, and has settled in beautifully."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/_images/person.avif" alt="Michael Chen" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Adopted Simba, 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate">
+                    <div class="testimonial-text">
+                        "As first-time pet owners, we were nervous about the process, but the team at FourPaws guided us every step of the way. Daisy has completed our family!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/_images/person2.avif" alt="Jessica Martinez" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Jessica Martinez</h4>
+                            <p>Adopted Daisy, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Whether you're looking to adopt, volunteer, or donate, your support helps us save more animals in need.</p>
+            <div class="hero-buttons">
+                <th><a class="nav-btn green" href="adopt.html"><h3>Adopt a Pet</h3></a></th>
+                <th><a class="nav-btn green" href="donate.html"><h3>Donate Today</h3></a></th> 
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FourPaws</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 1rem;">We are a non-profit organization dedicated to rescuing and rehoming animals in need.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Available Pets</a></li>
+                        <li><a href="#">Adoption Process</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Foster</a></li>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i>Westlake Business Park, The Green Building, 9B Bell Crescent, Westlake, 7945 South Africa</li>
+                        <li><i class="fas fa-phone"></i> +27 21 702 4277</li>
+                        <li><i class="fas fa-envelope"></i> office@four-paws.org.za</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9am-6pm</li>
+                    </ul>
+
+                    <br> 
+                    <br> 
+                    <iframe src="https://www.google.com/maps?q=FOUR+PAWS+South+Africa&hl=en&z=17&output=embed" width="150%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    
+                    <h4 style="margin-top: 1.5rem;">Newsletter</h4>
+                    <p style="color: #bdc3c7; font-size: 0.9rem;">Stay updated with our latest news and events</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 FourPaws Animal Adoption Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+            
+            // Add hover effect to pet cards
+            const petCards = document.querySelectorAll('.pet-card');
+            petCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
 <p>
     <script>
 var theDate=new Date ()
