@@ -3,73 +3,810 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Working at FOUR PAWS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --secondary: #63b3ed;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --gray: #7f8c8d;
+            --success: #2ecc71;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary, --secondary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+        }
+        
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Mobile-first navigation */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .nav-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--dark);
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* button-style replacements - matching original styling */
+        .nav-btn {
+            display: inline-block;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+            -webkit-tap-highlight-color: transparent;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px;
+            min-width: 44px; /* Minimum touch target size */
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn.small { 
+            padding: 0px 5px; 
+            font-size: 0.9rem;
+        }
+        
+        .nav-btn.green { 
+            padding: 10px 18px; 
+            border-radius: 28px; 
+            text-decoration: none; 
+            color: #fff; 
+            background: linear-gradient(45deg, #ff6b6b, #f7b731); 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12); 
+            transform: translateY(0); 
+            transition: transform .18s ease, box-shadow .18s ease; 
+        }
+        
+        /* hover / focus effects */
+        .nav-btn:hover,
+        .nav-btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            text-decoration: none;
+            outline: none;
+        }
+        
+        .nav-btn.green:hover { 
+            background-color: #9cff67; 
+        }
+        
+        /* ensure heading inside link doesn't add extra spacing */
+        .nav-btn h3 {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1;
+            color: inherit;
+        }
+        
+        /* Desktop navigation */
+        .desktop-nav {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .desktop-nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        
+        /* Main content styling */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: white;
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .page-intro {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        .info-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+            padding: 0 15px;
+        }
+        
+        .info-block {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .info-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .info-block:nth-child(2) {
+            border-left-color: var(--accent);
+        }
+        
+        .info-block:nth-child(3) {
+            border-left-color: var(--success);
+        }
+        
+        .block-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .info-block:nth-child(2) .block-icon {
+            color: var(--accent);
+        }
+        
+        .info-block:nth-child(3) .block-icon {
+            color: var(--success);
+        }
+        
+        .info-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .info-block p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .info-block:nth-child(2) .read-more {
+            color: var(--accent);
+        }
+        
+        .info-block:nth-child(3) .read-more {
+            color: var(--success);
+        }
+        
+        .read-more:hover {
+            gap: 12px;
+        }
+        
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s;
+            overflow: hidden;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .modal-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .modal-body ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-body li {
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background: white;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .benefits-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .benefit-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-item h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation classes */
+        .animate-block {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .mobile-header {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: flex;
+            }
+            
+            .info-blocks {
+                padding: 0;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .info-blocks {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header {
+                padding: 2rem 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-        <table border="0" width="100%" height="0px">
-        <!-- Row1 -->
-        <tr> 
-<th><img src="_images/Logo.JPG" width="" alt="Placeholder Image"></b></th>
-<th><button style="background-color: white; padding: 0px 5px; border: none; border-radius: 5px; cursor: pointer;"><a href="services.html" style="text-decoration: none; color: black;"><h3>SERVICES</h3></a></button></th>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <a href="index.html">
+            <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about_us.html">About Us</a>
+            <a href="Donate.html">Donate</a>
+            <a href="adopt.html">Adopt</a>
+        </nav>
+    </header>
+    
+    <!-- Desktop Navigation -->
+    <div class="container">
+        <div class="desktop-nav">
+            <a href="index.html">
+                <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
+            </a>
+            <div class="desktop-nav-links">
+                <a class="nav-btn small" href="services.html"><h3>SERVICES</h3></a>
+                <a class="nav-btn" href="enquiry.html"><h3>ENQUIRY</h3></a>
+                <a class="nav-btn" href="contact.html"><h3>CONTACT US</h3></a>
+                <a class="nav-btn" href="about_us.html"><h3>ABOUT US</h3></a>
+                <a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a>
+                <a class="nav-btn green" href="adopt.html"><h3>ADOPT</h3></a>
+            </div>
+        </div>
+    </div>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="enquiry.html" style="text-decoration: none; color: black;"><h3>ENQUIRY</h3></a></button></th>
+    <!-- Main Content -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Working at FOUR PAWS</h1>
+            <p class="page-intro">
+                FOUR PAWS is the global animal welfare organisation for animals under human influence, which reveals suffering, rescues animals in need and protects them. We advocate for a world where humans treat animals with respect, empathy and understanding.
+            </p>
+            <br>
+            <p class="page-intro">
+                We believe in diversity within our teams and welcome everyone with respect, trust, and empathy. In our daily work, we require dedication, a global mindset, heartfelt commitment, and the desire to make a meaningful impact.
+            </p>
+        </div>
+    </div>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="contact.html" style="text-decoration: none; color: black;"><h3>CONTACT US</h3></a></button></th>
+    <div class="container">
+        <div class="info-blocks">
+            <div class="info-block animate-block" id="people-block">
+                <div class="block-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2>PEOPLE @ FOURPAWS</h2>
+                <p>We are looking for the right people in the right places. We seek individuals who can overcome boundaries with creative solutions and strive for the impossible.</p>
+                <a href="#" class="read-more" data-modal="people-modal">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="info-block animate-block delay-1" id="culture-block">
+                <div class="block-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2>CULTURE @ FOURPAWS</h2>
+                <p>We enjoy testing and learning, celebrating our successes and providing a trustful failure culture.</p>
+                <a href="#" class="read-more" data-modal="culture-modal">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="info-block animate-block delay-2" id="working-block">
+                <div class="block-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h2>WORKING @ FOURPAWS</h2>
+                <p>We offer a digitally advanced environment with a dynamic and global spirit and state-of-the-art means of collaboration.</p>
+                <a href="#" class="read-more" data-modal="working-modal">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
-<th><button style="background-color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="about_us.html" style="text-decoration: none; color: black;"><h3>ABOUT US</h3></a></button></th>
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="benefits-title">WHAT FOUR PAWS OFFERS</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>ONBOARDING</h3>
+                    <p>Comprehensive orientation and training</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>COLLABORATION</h3>
+                    <p>Team-focused work environment</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>TREATS</h3>
+                    <p>Employee perks and benefits</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>DIVERSITY, EQUITY & INCLUSION</h3>
+                    <p>Inclusive workplace culture</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>DIGITAL TRAINING</h3>
+                    <p>Continuous learning opportunities</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>DOGS AT THE OFFICE</h3>
+                    <p>Pet-friendly workplace</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>WORK LIFE BALANCE</h3>
+                    <p>Flexible working arrangements</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>FUTURE</h3>
+                    <p>Career growth and development</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>GREEN APPROACH</h3>
+                    <p>Environmentally conscious practices</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>FAMILY-FRIENDLY WORKING ENVIRONMENT</h3>
+                    <p>Support for working parents</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> FOUR PAWS International. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- People Modal -->
+    <div class="modal" id="people-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>PEOPLE @ FOURPAWS</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We are looking for the right people in the right places. We seek individuals who can overcome boundaries with creative solutions and strive for the impossible.</p>
+                <p>We want to attract junior talents, experts and leaders likewise. Agility, ownership and a high degree of self-responsibility is the base of collaboration within our frames.</p>
+                <h3>What we look for:</h3>
+                <ul>
+                    <li>Passionate individuals committed to animal welfare</li>
+                    <li>Creative problem-solvers who think outside the box</li>
+                    <li>Team players with a collaborative mindset</li>
+                    <li>Professionals with a global perspective</li>
+                    <li>People who value continuous learning and growth</li>
+                </ul>
+                <p>If you share our vision and values, we would love to hear from you.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Culture Modal -->
+    <div class="modal" id="culture-modal">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--accent);">
+                <h2>CULTURE @ FOURPAWS</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We enjoy testing and learning, celebrating our successes and providing a trustful failure culture.</p>
+                <p>The strategic focus on being a vital organisation helps to optimise our organisational excellence, our effectiveness and efficiency globally.</p>
+                <h3>Our Cultural Pillars:</h3>
+                <ul>
+                    <li><strong>Innovation:</strong> We encourage experimentation and creative thinking</li>
+                    <li><strong>Collaboration:</strong> We work together across teams and borders</li>
+                    <li><strong>Resilience:</strong> We learn from setbacks and keep moving forward</li>
+                    <li><strong>Transparency:</strong> We communicate openly and honestly</li>
+                    <li><strong>Impact:</strong> We focus on what truly makes a difference for animals</li>
+                </ul>
+                <p>Our culture is built on mutual respect, trust, and a shared commitment to our mission.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Working Modal -->
+    <div class="modal" id="working-modal">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--success);">
+                <h2>WORKING @ FOURPAWS</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We offer a digitally advanced environment with a dynamic and global spirit and state-of-the-art means of collaboration.</p>
+                <p>Working security and safety means the protection of our people, our systems and our organisation. Learn more about how we work here.</p>
+                <h3>Our Work Environment:</h3>
+                <ul>
+                    <li><strong>Flexibility:</strong> Remote work options and flexible schedules</li>
+                    <li><strong>Technology:</strong> Access to the latest tools and platforms</li>
+                    <li><strong>Development:</strong> Continuous learning and growth opportunities</li>
+                    <li><strong>Wellbeing:</strong> Comprehensive health and wellness programs</li>
+                    <li><strong>Global Network:</strong> Collaborate with colleagues worldwide</li>
+                </ul>
+                <p>We believe that when our team members thrive, our impact for animals grows exponentially.</p>
+            </div>
+        </div>
+    </div>
 
-<th>
-    <button style="background-color: white; padding: 5px; border: none; border-radius: 5px; cursor: pointer; transition: transform 0.2s;">
-        <img src="_images/Search.JPG" width="" alt="Search" style="max-width: 100%; height: auto;">
-    </button>
-</th>
-
-<th><button style="background-color: greenyellow; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><a href="Donate.html" style="text-decoration: none; color: black;"><h3>DONATE</h3></a></button></th>
-
-<th><button style="background-color: greenyellow; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"><h3>ADOPT</h3></button></th>
-
-
-</tr>
-
-<!----Row2---->
-<th colspan="2">
-</th>
-</table>
-
-<h1 align="center"> Working at FOUR PAWS</h1>
-<p align="center"> FOUR PAWS is the global animal welfare organisation for animals under human influence, which reveals suffering, rescues animals in need and protects them. We advocate for a world where humans treat animals with respect, empathy and understanding.</p>
-<br>
-<p align="center">We believe in diversity within our teams and welcome everyone with respect, trust, and empathy. In our daily work, we require dedication, a global mindset, heartfelt commitment, and the desire to make a meaningful impact. </p>
-
-<table border="6" width="100%" height="100px">
-        <tr> 
-            <th><h2>PEOPLE @ FOURPAWS</h2>
-            <p>We are looking for the right people in the right places. We seek individuals who can overcome boundaries with creative solutions and strive for the impossible. We want to attract junior talents, experts and leaders likewise. Agility, ownership and a high degree of self-responsibility is the base of collaboration within our frames.</p></th>
-            <th><h2>CULTURE @ FOURPAWS</h2>
-            <p>We enjoy testing and learning, celebrating our successes and providing a trustful failure culture. The strategic focus on being a vital organisation helps to optimise our organisational excellence, our effectiveness and efficiency globally.</p></th>
-        </tr>
-
-        <th><h2>WORKING @ FOURPAWS</h2>
-        <p>We offer a digitally advanced environment with a dynamic and global spirit and state-of-the-art means of collaboration. Working security and safety means the protection of our people, our systems and our organisation. Learn more about how we work here.</p></th>
-        <th><h2>COLLABORATION @ FOURPAWS</h2>
-        <p>We care about your development and your wellbeing by honoring our values throughout your journey with us. A lively/encouraging/enabling meeting culture as well as virtual international teamwork support our doing.</p></th>
-</table>
-
-<br>
-<br>
-<H2 align="center">WHAT FOUR PAWS OFFERS</H2>
-
-<li>ONBOARDING</li>
-<li>COLLABORATION</li>
-<LI>TREATS</LI>
-<li>DIVERSITY,EQUITY & INCLUSION</li>
-<li>DIGITAL TRAINING</li>
-<li>DOGS AT THE OFFICE</li>
-<li>WORK LIFE BALANCE</li>
-<li>FUTURE</li>
-<li>GREEN APPROACH</li>
-<li>FAMILY-FRIENDLY WORKING ENVIRONMENT</li>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                // Animate hamburger to X
+                const spans = this.querySelectorAll('span');
+                if (this.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    
+                    // Reset hamburger animation
+                    const spans = mobileMenuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+            
+            // Animation on scroll
+            const animateBlocks = document.querySelectorAll('.animate-block');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateBlocks.forEach(block => {
+                observer.observe(block);
+            });
+            
+            // Modal functionality
+            const modalTriggers = document.querySelectorAll('.read-more');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-btn');
+            
+            // Open modal
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close modal with close button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Close modal when clicking outside content
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+            });
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
-
 </html>

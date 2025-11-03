@@ -4,20 +4,11 @@
     <link rel="stylesheet" href="_css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FourPaws South Africa - Animal Rescue & Adoption</title>
     <link rel="stylesheet" href="css/images.css" media="screen"/>
- <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-      
-        padding: 0;
-        background-color: var(--primary, --secondary);
-    }
-            :root {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        :root {
             --primary: #4a90e2;
             --secondary: #63b3ed;
             --accent: #e74c3c;
@@ -27,119 +18,303 @@
             --gray: #7f8c8d;
             --success: #2ecc71;
         }
-        button {
-            font-family: Arial, sans-serif;
-            background-color: var(--primary);
+        
+        * {
+            box-sizing: border-box;
         }
-    h1, h2, h3 {
-        color: #333;
-    }
-    p {
-        line-height: 1.6;
-        color: #555;
-    }
-    table {
-        margin-top: 20px;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 0px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Mobile-first navigation */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .nav-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--dark);
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+            -webkit-tap-highlight-color: transparent;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px;
+            min-width: 44px; /* Minimum touch target size */
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn.small { 
+            padding: 8px 12px; 
+            font-size: 0.9rem;
+        }
+        
+        .nav-btn.green { 
+            padding: 12px 18px; 
+            border-radius: 28px; 
+            text-decoration: none; 
+            color: #fff; 
+            background: linear-gradient(45deg, #ff6b6b, #f7b731); 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12); 
+            transform: translateY(0); 
+            transition: transform .18s ease, box-shadow .18s ease; 
+        }
+        
+        /* hover / focus effects */
+        .nav-btn:hover,
+        .nav-btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            text-decoration: none;
+            outline: none;
+        }
+        
+        .nav-btn.green:hover { 
+            background: linear-gradient(45deg, #ff8585, #f9c552); 
+        }
+        
+        /* ensure heading inside link doesn't add extra spacing */
+        .nav-btn h3 {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1;
+            color: inherit;
+        }
+        
+        /* Desktop navigation */
+        .desktop-nav {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .desktop-nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        
+        .hero { 
+            text-align: center; 
+            padding: 40px 20px; 
+            position: relative; 
+            overflow: hidden; 
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .title {
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            margin: 0 0 10px;
+            background: linear-gradient(90deg, #ffffff, #ffd36b, #ffffff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientMove 6s linear infinite;
+            display: inline-block;
+            transform-origin: center;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .title .paw { 
+            margin-left: 8px; 
+            color: #ffd36b; 
+            animation: pawBounce 1.2s ease-in-out infinite; 
+            display: inline-block; 
+        }
+        
+        @keyframes pawBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px) rotate(-8deg); }
+        }
+        
+        .subtitle { 
+            color: rgba(255,255,255,0.9); 
+            margin-top: 6px; 
+            font-size: clamp(0.9rem, 3vw, 1rem); 
+            animation: fadeIn 1s ease forwards; 
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(8px); } 
+            to { opacity: 0.9; transform: translateY(0); } 
+        }
+        
+        .hero .cta { 
+            margin-top: 20px; 
+            display: flex; 
+            gap: 10px; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+        }
+        
+        .hero .cta a { 
+            padding: 12px 20px; 
+            border-radius: 28px; 
+            text-decoration: none; 
+            color: #fff; 
+            background: linear-gradient(45deg, #ff6b6b, #f7b731); 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12); 
+            transform: translateY(0); 
+            transition: transform .18s ease, box-shadow .18s ease; 
+            font-weight: bold;
+            min-width: 140px;
+        }
+        
+        .hero .cta a:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 16px 30px rgba(0,0,0,0.18); 
+        }
+        
+        .sparkle { 
+            position: absolute; 
+            top: -8px; 
+            right: 10px; 
+            font-size: 20px; 
+            color: #fff; 
+            opacity: 0.18; 
+            animation: spin 9s linear infinite; 
+            pointer-events: none; 
+        }
+        
+        @keyframes spin { 
+            from { transform: rotate(0); } 
+            to { transform: rotate(360deg); } 
+        }
+        
 
-    /* button-style replacements */
-.nav-btn {
-    display: inline-block;
-    background-color: var(--primary);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-.nav-btn.small { padding: 0px 5px; }
-.nav-btn.green { padding:10px 18px; border-radius:28px; text-decoration:none; color:#fff; background:linear-gradient(45deg,#ff6b6b,#f7b731); box-shadow:0 6px 18px rgba(0,0,0,0.12); transform:translateY(0); transition:transform .18s ease, box-shadow .18s ease; }
-
-/* hover / focus effects */
-.nav-btn:hover,
-.nav-btn:focus {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    text-decoration: none;
-    outline: none;
-}
-.nav-btn.green:hover { background-color: #9cff67; }
-
-/* ensure heading inside link doesn't add extra spacing */
-.nav-btn h3 {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1;
-    color: inherit;
-}
-
-.hero { text-align:center; padding: 40px 20px; position: relative; overflow: visible; }
-.title {
-    font-family: 'Trebuchet MS', Arial, sans-serif;
-    font-size: 2.4rem;
-    margin: 0 0 10px;
-    background: linear-gradient(90deg,#00b7ff,#ffffff,#00b7ff);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradientMove 6s linear infinite;
-    display: inline-block;
-    transform-origin: center;
-    letter-spacing: 0.5px;
-}
-@keyframes gradientMove {
-    0%{background-position:0% 50%}
- 50%{background-position:100% 50%}
- 100%{background-position:0% 50%}
-}
-.title .paw { margin-left: 8px; color: #ffd36b; animation: pawBounce 1.2s ease-in-out infinite; display:inline-block; }
-@keyframes pawBounce {
-    0%,100%{ transform: translateY(0) }
- 50%{ transform: translateY(-8px) rotate(-8deg) }
-}
-.subtitle { color:var(--dark); opacity:0.95; margin-top:6px; font-size:1rem; animation:fadeIn 1s ease forwards; }
-@keyframes fadeIn { from{opacity:0; transform:translateY(8px)} to{opacity:0.95; transform:translateY(0)} }
-.hero .cta { margin-top:14px; display:inline-flex; gap:8px; justify-content:center; flex-wrap:wrap; }
-.hero .cta a { padding:10px 18px; border-radius:28px; text-decoration:none; color:#fff; background:linear-gradient(45deg,#ff6b6b,#f7b731); box-shadow:0 6px 18px rgba(0,0,0,0.12); transform:translateY(0); transition:transform .18s ease, box-shadow .18s ease; }
-.hero .cta a:hover{ transform: translateY(-6px); box-shadow:0 16px 30px rgba(0,0,0,0.18); }
-.sparkle { position:absolute; top:-8px; right:10px; font-size:20px; color:#fff; opacity:0.18; animation:spin 9s linear infinite; pointer-events:none; }
-@keyframes spin{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
-
-/* small shimmer underline for emphasis */
-.title:after {
-    content: "";
-    display:block;
-    height:3px;
-    margin:8px auto 0;
-    width:60%;
-    border-radius:3px;
-    background:linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
-    animation: shimmer 2.2s linear infinite;
-}
-@keyframes shimmer {
-    0%{transform:translateX(-100%)}
- 100%{transform:translateX(100%)}
-}
-
-  .stats {
+        .title:after {
+            content: "";
+            display: block;
+            height: 3px;
+            margin: 8px auto 0;
+            width: 60%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+            animation: shimmer 2.2s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .stats {
             background: var(--primary);
             color: white;
-            padding: 3rem 0;
+            padding: 2rem 0;
         }
         
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
         }
         
         .stat-item {
@@ -148,29 +323,46 @@
         }
         
         .stat-number {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
         
         .stat-label {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             opacity: 0.9;
         }
-
-                .testimonials {
+        
+        .testimonials {
             background: white;
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title h2 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .testimonial-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
         
         .testimonial-card {
             background: var(--light);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
@@ -198,59 +390,68 @@
         }
         
         .author-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
         }
         
         .author-info h4 {
             margin-bottom: 5px;
+            font-size: 1rem;
         }
         
         .author-info p {
             color: var(--gray);
             font-size: 0.9rem;
+            margin: 0;
         }
         
         .cta {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-align: center;
-            padding: 5rem 0;
+            padding: 3rem 0;
         }
         
         .cta h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1.5rem;
         }
         
         .cta p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 2rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
         footer {
             background: var(--dark);
             color: white;
-            padding: 4rem 0 2rem;
+            padding: 3rem 0 2rem;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 3rem;
+            gap: 30px;
+            margin-bottom: 2rem;
         }
         
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             color: white;
         }
         
@@ -266,10 +467,20 @@
         
         .footer-column ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         .footer-column ul li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-column ul li i {
+            margin-right: 10px;
+            margin-top: 3px;
+            min-width: 16px;
         }
         
         .footer-column a {
@@ -284,7 +495,7 @@
         
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             margin-top: 1rem;
         }
         
@@ -310,7 +521,7 @@
         
         .newsletter-form input {
             flex: 1;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: none;
             border-radius: 5px 0 0 5px;
             font-size: 1rem;
@@ -324,10 +535,23 @@
             border-radius: 0 5px 5px 0;
             cursor: pointer;
             transition: background 0.3s;
+            min-width: 50px;
         }
         
         .newsletter-form button:hover {
             background: var(--secondary);
+        }
+        
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
         }
         
         .copyright {
@@ -337,51 +561,153 @@
             color: #bdc3c7;
             font-size: 0.9rem;
         }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .mobile-header {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .stats {
+                padding: 3rem 0;
+            }
+            
+            .testimonials {
+                padding: 4rem 0;
+            }
+            
+            .cta {
+                padding: 4rem 0;
+            }
+            
+            footer {
+                padding: 4rem 0 2rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .hero .cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero .cta a {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .nav-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 5px;
+                padding: 12px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .testimonial-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
 <body>
-   <div class="button">
-    <table border="0" width="100%" height="0px">
-<!----Row1---->
-<tr> 
-<th><b></b></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th><a href="index.html"><img src="_images/Logo.JPG" alt="Placeholder Image"></a></th>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <a href="index.html">
+            <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about_us.html">About Us</a>
+            <a href="Donate.html">Donate</a>
+            <a href="adopt.html">Adopt</a>
+        </nav>
+    </header>
+    
+    <!-- Desktop Navigation -->
+    <div class="container">
+        <div class="desktop-nav">
+            <a href="index.html">
+                <img src="_images/Logo.JPG" alt="FourPaws Logo" class="logo">
+            </a>
+            <div class="desktop-nav-links">
+                <a class="nav-btn small" href="services.html"><h3>SERVICES</h3></a>
+                <a class="nav-btn" href="enquiry.html"><h3>ENQUIRY</h3></a>
+                <a class="nav-btn" href="contact.html"><h3>CONTACT US</h3></a>
+                <a class="nav-btn" href="about_us.html"><h3>ABOUT US</h3></a>
+                <a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a>
+                <a class="nav-btn green" href="adopt.html"><h3>ADOPT</h3></a>
+            </div>
+        </div>
+    </div>
 
-<th><a class="nav-btn small" href="services.html"><h3>SERVICES</h3></a></th>
+    <div class="hero" role="banner" aria-label="FourPaws hero">
+        <div class="container">
+            <h1 class="title">FourPaws South Africa <i class="fa-solid fa-paw paw" aria-hidden="true"></i></h1>
+            <div class="subtitle">Helping paws find loving homes — brighter days, wagging tails.</div>
 
-<th><a class="nav-btn" href="enquiry.html"><h3>ENQUIRY</h3></a></th>
-
-<th><a class="nav-btn" href="contact.html"><h3>CONTACT US</h3></a></th>
-
-<th><a class="nav-btn" href="about_us.html"><h3>ABOUT US</h3></a></th>
-
-    <th><a class="nav-btn green" href="Donate.html"><h3>DONATE</h3></a></th>
-
-<th><a class="nav-btn green" href="adopt.html"><h3>ADOPT</h3></a></th>
-
-</tr>
-
-
-<!----Row2---->
-<th colspan="2">
-</th>
-</table>
-<style>
-
-</style>
-
-<div class="hero" role="banner" aria-label="FourPaws hero">
-    <h1 class="title">FourPaws South Africa <i class="fa-solid fa-paw paw" aria-hidden="true"></i></h1>
-    <div class="subtitle">Helping paws find loving homes — brighter days, wagging tails.</div>
-
-    <i class="fa-solid fa-star sparkle" aria-hidden="true"></i>
-</div>
-<img src="_images/Background.jpg" width="100%" alt="Placeholder Image">
+            <div class="cta">
+                <a href="adopt.html">Find a Pet</a>
+                <a href="donate.html">Support Us</a>
+            </div>
+            
+            <i class="fa-solid fa-star sparkle" aria-hidden="true"></i>
+        </div>
+    </div>
+    
+    <img src="_images/Background.jpg" class="hero-image" alt="Happy dogs and cats available for adoption">
 
     <section class="stats">
         <div class="container">
@@ -406,10 +732,10 @@
         </div>
     </section>
 
-        <section class="testimonials">
+    <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2 style="text-align: center;">Happy Tails</h2>
+                <h2>Happy Tails</h2>
                 <p>Hear from families who found their perfect companions through FourPaws</p>
             </div>
             
@@ -462,9 +788,8 @@
             <h2>Ready to Make a Difference?</h2>
             <p>Whether you're looking to adopt, volunteer, or donate, your support helps us save more animals in need.</p>
             <div class="hero-buttons">
-                <th><a class="nav-btn green" href="adopt.html"><h3>Adopt a Pet</h3></a></th>
-                <th><a class="nav-btn green" href="donate.html"><h3>Donate Today</h3></a></th> 
-
+                <a class="nav-btn green" href="adopt.html"><h3>Adopt a Pet</h3></a>
+                <a class="nav-btn green" href="donate.html"><h3>Donate Today</h3></a>
             </div>
         </div>
     </section>
@@ -477,17 +802,17 @@
                     <h3>FourPaws</h3>
                     <p style="color: #bdc3c7; margin-bottom: 1rem;">We are a non-profit organization dedicated to rescuing and rehoming animals in need.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="#">Available Pets</a></li>
                         <li><a href="#">Adoption Process</a></li>
                         <li><a href="#">Success Stories</a></li>
@@ -500,7 +825,7 @@
                     <ul>
                         <li><a href="#">Volunteer</a></li>
                         <li><a href="#">Foster</a></li>
-                        <li><a href="#">Donate</a></li>
+                        <li><a href="donate.html">Donate</a></li>
                         <li><a href="#">Events</a></li>
                         <li><a href="#">Partnerships</a></li>
                     </ul>
@@ -509,32 +834,68 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i>Westlake Business Park, The Green Building, 9B Bell Crescent, Westlake, 7945 South Africa</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Westlake Business Park, The Green Building, 9B Bell Crescent, Westlake, 7945 South Africa</li>
                         <li><i class="fas fa-phone"></i> +27 21 702 4277</li>
                         <li><i class="fas fa-envelope"></i> office@four-paws.org.za</li>
                         <li><i class="fas fa-clock"></i> Mon-Sat: 9am-6pm</li>
                     </ul>
 
-                    <br> 
-                    <br> 
-                    <iframe src="https://www.google.com/maps?q=FOUR+PAWS+South+Africa&hl=en&z=17&output=embed" width="150%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps?q=FOUR+PAWS+South+Africa&hl=en&z=17&output=embed" width="100%" height="250" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="FourPaws South Africa location"></iframe>
+                    </div>
                     
                     <h4 style="margin-top: 1.5rem;">Newsletter</h4>
                     <p style="color: #bdc3c7; font-size: 0.9rem;">Stay updated with our latest news and events</p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="Your email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        <input type="email" placeholder="Your email" aria-label="Your email address">
+                        <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 FourPaws Animal Adoption Agency. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> FourPaws Animal Adoption Agency. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Animate hamburger to X
+            const spans = this.querySelectorAll('span');
+            if (this.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                
+                // Reset hamburger animation
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+        
         // Simple animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.animate');
@@ -555,33 +916,9 @@
                 observer.observe(element);
             });
             
-            // Add hover effect to pet cards
-            const petCards = document.querySelectorAll('.pet-card');
-            petCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
-<p>
-    <script>
-var theDate=new Date ()
-document.write("&copy; " +
-theDate.getFullYear ())
-document.write(" - FourPaws | Last modified: ")
-var theModifiedDate=new
-Date (document.LastModified)
-document.write(theModifiedDate.toDateString () )
-</script>
-<br>Powered by "Sharp-Sharp" Web Hosting
-</p>
-<br>
-
 </body>
 </html>
-
